@@ -6,9 +6,9 @@ def main():
     cursor = connection.cursor()
 
     # Get all rows from the students table
-    print("Fetching all rows from the students table...")
+    print("Fetching all rows from the account table...")
     results = cursor.execute('''
-        SELECT * FROM students
+        SELECT * FROM account
     ''')
 
     print("Results:")

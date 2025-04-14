@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_NAME = 'example.db'
+DB_NAME = 'banking_app.db'
 
 
 def initialize_database():
@@ -8,23 +8,35 @@ def initialize_database():
     print("Connected to the database.")
     cursor = connection.cursor()
     print("Cursor created.")
-    # Create a sample table
+    # This is the account table
     print("Creating table if it does not exist...")
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS students
-            (id integer primary key, 
-            name text, 
-            age integer, 
-            grade text, 
+        CREATE TABLE IF NOT EXISTS account
+            (pin integer primary key, 
+            user text, 
+            type text, 
+            balance float, 
             gpa real)
     ''')
 
+        # This is the user table
+    print("Creating second table")
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user
+            (id integer primary key, 
+            address text,
+            e-mail text,
+            phone-number integer,
+            authorization text,           
+    ''')
+
+
     print("Table created.")
 
-    # Insert sample data
+    # Insert data into
     print("Inserting sample data...")
     cursor.execute('''
-        INSERT INTO students (name, age,grade, gpa) VALUES
+        INSERT INTO account (name, age,grade, gpa) VALUES
         ('Alice', 16, '10th', 3.5),
         ('Bob', 17, '11th', 3.8),
         ('Charlie', 15, '9th', 3.2)
