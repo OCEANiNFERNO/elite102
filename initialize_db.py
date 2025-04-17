@@ -11,39 +11,41 @@ def initialize_database():
     # This is the account table
     print("Creating table if it does not exist...")
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS account
+        CREATE TABLE IF NOT EXISTS user
             (pin integer primary key, 
-            user text, 
-            type text, 
-            balance float, 
-            gpa real)
+            username text, 
+            password text,
+            address text,
+            email text,
+            phone_number integer
+            )
     ''')
 
         # This is the user table
     print("Creating second table")
+
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS user
+        CREATE TABLE IF NOT EXISTS account                   
             (id integer primary key, 
-            address text,
-            e-mail text,
-            phone-number integer,
-            authorization text,           
+            authorization text,
+            balance float
+            )           
     ''')
 
 
     print("Table created.")
 
-    # Insert data into
-    print("Inserting sample data...")
-    cursor.execute('''
-        INSERT INTO account (name, age,grade, gpa) VALUES
-        ('Alice', 16, '10th', 3.5),
-        ('Bob', 17, '11th', 3.8),
-        ('Charlie', 15, '9th', 3.2)
-    ''')
-    print("Sample data inserted.")
-    # Commit the changes and close the connection
-    print("Committing changes and closing the connection...")
+    # # Insert data into
+    # print("Inserting sample data...")
+    # cursor.execute('''
+    #     INSERT INTO account (name, age,grade, gpa) VALUES
+    #     ('Alice', 16, '10th', 3.5),
+    #     ('Bob', 17, '11th', 3.8),
+    #     ('Charlie', 15, '9th', 3.2)
+    # ''')
+    # print("Sample data inserted.")
+    # # Commit the changes and close the connection
+    # print("Committing changes and closing the connection...")
     connection.commit()
     connection.close()
 
