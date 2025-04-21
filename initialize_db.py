@@ -27,8 +27,10 @@ def initialize_database():
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS account                   
             (id integer primary key, 
+            user_id integer,
             authorization text,
-            balance float
+            balance integer,
+            FOREIGN KEY (user_id) REFERENCES user(pin)
             )           
     ''')
 

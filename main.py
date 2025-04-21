@@ -1,35 +1,31 @@
-import sqlite3
-from initialize_db import initialize_database
-initialize_database()
-
+import sqlite3 
 from bank_functions import BankAccount
 
 account = BankAccount()
 
 
-
 def main():
+    connection = sqlite3.connect('banking_app.db')
+    cursor = connection.cursor()
 
-    while True:
+    
+while True:
         #print login user
-        login_choice = account.login_menu()
+    login_choice = account.login_menu()
 
-        if login_choice == "1":
-            account.login()
-            #call login function
-            #elif login_choice == "2":
-                #call choi
+    if login_choice == "1":
+        if account.login():
+           banking_choice = account.banking_menu()
+           if banking_choice == '1':
+               account.check_balance()
+                
+    elif login_choice == "2":
+        account.create_user()
+        account.create_account()
             #elif login_choice == "3":
-
-        #bank_chopice == account.banking_menu():
-           # pass
-            # if statements for all the choices.
-        # say user wants to login, prompt bank app login
-
-        #login
-        #create account
-
-        #
+    else:
+        break
+        
 
 
 
