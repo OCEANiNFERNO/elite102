@@ -10,49 +10,36 @@ def main():
 
     
 while True:
-        #print login user
+    #print login user
     login_choice = account.login_menu()
-
+    
+    #Choice to login
     if login_choice == "1":
+        #if login is successful
         if account.login():
+           #prints out the banking choice
            banking_choice = account.banking_menu()
+           #if you wish to check your balance
            if banking_choice == '1':
                account.check_balance()
-                
+           elif banking_choice == '2':
+                account.withdraw()
+           elif banking_choice == "3":
+               account.deposit()
+           elif banking_choice == '4':
+               account.edit_user()
+               
     elif login_choice == "2":
         account.create_user()
         account.create_account()
-            #elif login_choice == "3":
+
+    #This is option 3        
     else:
         break
         
 
 
 
-
-#     connection = sqlite3.connect('example.db')
-#     cursor = connection.cursor()
-
-#     # Get all rows from the students table
-#     print("Fetching all rows from the account table...")
-#     results = cursor.execute('''
-#         SELECT * FROM account
-#     ''')
-
-#     print("Results:")
-#     for row in results:
-#         print(row)
-
-#     # Get all students with a GPA greater than 3.5
-#     print("Fetching students with GPA greater than 3.5...")
-#     results = cursor.execute('''
-#         SELECT * FROM students WHERE gpa > 3.5
-#     ''')
-#     print("Results:")
-#     for row in results:
-#         print(row)
-
-#     connection.close()
 
 
 if __name__ == "__main__":

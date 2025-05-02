@@ -12,12 +12,12 @@ def initialize_database():
     print("Creating table if it does not exist...")
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS user
-            (pin integer primary key, 
-            username text, 
-            password text,
-            address text,
-            email text,
-            phone_number integer
+            (pin integer PRIMARY KEY, 
+            username TEXT, 
+            password TEXT,
+            address TEXT,
+            email TEXT,
+            phone_number INTEGER
             )
     ''')
 
@@ -26,11 +26,11 @@ def initialize_database():
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS account                   
-            (id integer primary key, 
-            user_id integer,
-            authorization text,
-            balance integer,
-            FOREIGN KEY (user_id) REFERENCES user(pin)
+            (id integer PRIMARY KEY, 
+            authorization TEXT,
+            balance INTEGER,
+            user_pin INTEGER,
+            FOREIGN KEY (user_pin) REFERENCES user(pin)
             )           
     ''')
 
